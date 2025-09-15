@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-secondary text-white d-flex align-items-center">
+                    <i class="fas fa-tasks fa-lg me-2"></i>
+                    <h4 class="mb-0">All Tasks</h4>
+                </div>
+                <div class="card-body">
+                    {% if tasks %}
+                    <ul class="list-group">
+                        {% for t in tasks %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>
+                                {% if t.completed %}
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <s>{{ t.title }}</s>
+                                {% else %}
+                                <i class="far fa-circle text-secondary me-2"></i>
+                                {{ t.title }}
+                                {% endif %}
+                            </span>
+                            <span>
+                                <a href="{% url 'tasks:view_task' t.id %}" class="btn btn-sm btn-outline-info me-1"
+                                    title="View"><i class="fas fa-eye"></i></a>
+                                <a href="{% url 'tasks:update_task' t.id %}" class="btn btn-sm btn-outline-primary me-1"
+                                    title="Edit"><i class="fas fa-edit"></i></a>
+                                <a href="{% url 'tasks:delete_task' t.id %}" class="btn btn-sm btn-outline-danger"
+                                    title="Delete" onclick="return confirm('Delete this task?');"><i
+                                        class="fas fa-trash-alt"></i></a>
+                            </span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <div class="text-center text-muted">No tasks found.</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

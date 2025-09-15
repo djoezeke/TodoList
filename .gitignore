@@ -1,13 +1,9 @@
 # ignore vendor static files
-src/staticfiles
-static/**
-
-short/models.py
-short/urls.py
-short/views.py
+# src/staticfiles
+# static/**
 
 **/migrations
-**/templates
+# **/templates
 
 .DS_Store
 venv/

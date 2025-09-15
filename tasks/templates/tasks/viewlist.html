@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container py-5">
+    <div class="row mb-4 align-items-center">
+        <div class="col-md-8">
+            <h2 class="fw-bold"><i class="fas fa-list me-2 text-primary"></i>{{ list.title }}</h2>
+            <p class="text-muted mb-0"><i class="far fa-calendar-alt me-1"></i>Created: {{ list.created }}</p>
+        </div>
+        <div class="col-md-4 text-end">
+            <a href="{% url 'tasks:update_list' list.id %}" class="btn btn-outline-primary me-2">
+                <i class="fas fa-edit"></i> Edit
+            </a>
+            <a href="{% url 'tasks:delete_list' list.id %}" class="btn btn-outline-danger"
+                onclick="return confirm('Delete this list?');">
+                <i class="fas fa-trash-alt"></i> Delete
+            </a>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-12 text-end">
+            <a href="{% url 'tasks:add_task' list.id %}" class="btn btn-success">
+                <i class="fas fa-plus-circle"></i> Add Task
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="list-group shadow-sm">
+                {% for task in tasks %}
+                <a href="{% url 'tasks:view_task' task.id %}"
+                    class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3">
+                    <span class="d-flex align-items-center">
+                        {% if task.completed %}
+                        <i class="fas fa-check-circle text-success me-2"></i>
+                        <s>{{ task.title }}</s>
+                        {% else %}
+                        <i class="far fa-circle text-secondary me-2"></i>
+                        {{ task.title }}
+                        {% endif %}
+                    </span>
+                    <span class="badge bg-secondary"><i class="far fa-calendar-alt me-1"></i>{{
+                        task.created|date:'Y-m-d' }}</span>
+                </a>
+                {% empty %}
+                <div class="list-group-item text-center text-muted">No tasks found.</div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

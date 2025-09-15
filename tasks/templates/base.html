@@ -1,0 +1,149 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="keywords" content="To-Do List, Task , Todo , App" />
+<meta name="description" content="To-Do List Task Organizer and Manager." />
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<!-- Favicon -->
+<link id="favicon" rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-png" />
+
+
+<title>{% block title %}To-Do List | Task Organizer{% endblock %}</title>
+
+</head>
+
+<body>
+    <!-- header starts -->
+    <header class="header" data-header>
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="{% static 'images/logo.png' %}" width="40" height="40" alt="djoezeke | logo" />
+            </a>
+
+            <nav class="navbar" data-navbar>
+                <div class="navbar-top">
+                    <a href="#" class="logo">
+                        <img src="{% static 'images/logo.png' %}" width="64" height="24" alt="djoezeke | logo" />
+                    </a>
+                    <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+                        <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                </div>
+
+                <ul class="navbar-list">
+                    <li class="navbar-item">
+                        <a class="navbar-link" href="#home">Home</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a class="navbar-link" href="#list">List</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a class="navbar-link" href="#tasks">Tasks</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a class="navbar-link" href="#about">About</a>
+                    </li>
+                </ul>
+
+                <ul class="social-list">
+                    <li>
+                        <a href="https://twitter.com/djoezeke/" class="social-link">
+                            <ion-icon name="logo-twitter"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="https://facebook.com/djoezeke/" class="social-link">
+                            <ion-icon name="logo-facebook"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="https://linkedin.com/in/djoezeke/" class="social-link">
+                            <ion-icon name="logo-linkedin"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="https://instagram.com/djoezeke/" class="social-link">
+                            <ion-icon name="logo-instagram"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="https://youtube.com/djoezeke/" class="social-link">
+                            <ion-icon name="logo-youtube"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="https://github.com/djoezeke/TodoList" class="social-link">
+                            <ion-icon name="logo-github"></ion-icon>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+                <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+            </button>
+
+            <div class="overlay" data-nav-toggler data-overlay></div>
+        </div>
+    </header>
+    <!-- header ends -->
+
+    <!-- main ends -->
+    <main>
+        <div class="container main">
+            <!-- <h2 class="h1 section-title">To-Do List Application</h2> -->
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </main>
+    <!-- main ends -->
+
+    <!-- footer start -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p class="copyright">
+                    &copy; Sackey Ezekiel Etrue | To-Do List 2025. Published by
+                    <a href="#" class="copyright-link hover:underline">djoezeke</a>.
+                </p>
+            </div>
+        </div>
+
+        <!-- scroll top btn -->
+        <a href="#home" aria-label="ScrollTop" id="scroll-top"></a>
+        <!-- scroll back to top -->
+    </footer>
+    <!-- footer start -->
+
+    <!-- ==== ALL MAJOR JAVASCRIPT CDNS STARTS ==== -->
+    <!-- jquery cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- - ionicon link -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+
+    <!-- - custom js -->
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>
