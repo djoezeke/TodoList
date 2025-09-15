@@ -42,40 +42,42 @@ The **To-Do List Application** enables users to manage and organize their tasks 
 
 **To-Do List** is a web based application made predominantly with Django that allows the user to create and keep track of _Tasks_ and complete them with a single click.
 
-### 🚀 Features
+## 🚀 Features
+
+- 📝 **Create, edit, and delete tasks** with a modern, responsive UI
+- ✅ **Mark tasks as complete/incomplete** with a single click
+- 🗂️ **Organize tasks into lists** for better management
+- 🔍 **Search, filter, and sort** tasks by title, date, or completion
+- 🎨 **Modern UI** with Bootstrap 5 and Font Awesome icons
+- 📱 **Mobile-friendly** and fully responsive
+- 💾 **SQLite database** for easy setup and persistence
+- ⚡ **Fast and intuitive** user experience
+- 🛡️ **Secure** with CSRF protection and Django best practices
 
 <!--
-- Dead simple
-- Easily Create, Update
-- Simple UI
-- Blazing fast
-
-- Add, edit, and delete todo items
-- Mark todos as complete
-- Real-time updates without page reloads
-- SQLite database integration
-
-- ### 📄 Create Tasks
-  - Users can add new tasks to their to-do list.
-  - For example, you might input: "Buy groceries," "Finish report," or "Call Mom."
-
-2. **Update Tasks:**
-   - Mark tasks as completed or update their status.
-   - You can set priorities, due dates, or additional notes for each task.
-
 ✔️ Complete Tasks
 🌠 Move Task
 ❌ Delete Task
 🌟 Select Tasks
 💼 Create Folders
 📁 Open Folder
-❌ Delete Folder -->
+❌ Delete Folder
+-->
+
+<!-- #### Example Screenshots
+
+<p align="center">
+   <img src="images/to-do-list.jpg" alt="To-Do List UI" width="600"/>
+</p> -->
 
 ## 📁 Project Structure
 
 ```
 TodoList
 ├── images
+├── static
+├── tasks
+├── todolist
 ├── .python-version
 ├── pyproject.toml
 ├── requirements.txt       # Project dependencies.
@@ -96,7 +98,30 @@ TodoList
 
 ### ⚙️ Installation
 
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/djoezeke/TodoList.git
+   cd TodoList
+   ```
+2. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. **Apply migrations:**
+   ```bash
+   python manage.py migrate
+   ```
+4. **Run the development server:**
+   ```bash
+   python manage.py runserver
+   ```
+
 ### 🤖 Usage
+
+1. Open your browser and go to `http://127.0.0.1:8000/`
+2. Create a new list and start adding tasks!
+3. Use the navigation bar to view all lists, all tasks, or return to the home page.
+4. Edit, complete, or delete tasks and lists as needed.
 
 ## 🔰 Contributing
 
@@ -145,10 +170,24 @@ Feel free to submit issues or pull requests if you have suggestions or improveme
 
 We would like to express our gratitude to the following projects and individuals whose work made this project possible:
 
+- [Django](https://www.github.com/django/django/) – The Web framework for perfectionists with deadlines.
+- The open-source community for their invaluable libraries, tutorials, and support.
+- Special thanks to all contributors, testers, and users who provided feedback and suggestions.
+
+If you feel your work should be acknowledged here, please open an issue or pull request.
+
+---
+
 ## 📚 References
 
 - **Intresting:**
+- [Font Awesome](https://fontawesome.com/)
+- [Bootstrap 5](https://getbootstrap.com/)
 
 - **Learning Resources:**
+- [Django Documentation](https://docs.djangoproject.com/)
 
 ## 📝 License
+
+This project is protected under the [MIT](LICENSE) License.
+For more details, refer to the [LICENSE](LICENSE) file.
