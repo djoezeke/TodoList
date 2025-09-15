@@ -31,24 +31,26 @@ from .views import (
     delete_task,
 )
 
-from .views import home
+from .views import home, tasks, lists
 
-app_name: str = "task"
+app_name: str = "tasks"
 
 urlpatterns = [
     path("", home, name="home"),
     # User URLs
     path("add/", CreateList.as_view(), name="add_list"),
+    path("tasks/", tasks, name="all_task"),
+    path("lists/", lists, name="all_list"),
     # List URLs
-    path("<int:ListID>/", ReadList.as_view(), name="view_list"),
-    path("<str:ListID>/", ReadList.as_view(), name="view_list"),
-    path("<int:ListID>/update/", UpdateList.as_view(), name="update_list"),
-    path("<str:ListID>/update/", UpdateList.as_view(), name="update_list"),
-    path("<int:ListID>/delete/", delete_list, name="delete_list"),
-    path("<str:ListID>/delete/", delete_list, name="delete_list"),
+    path("<int:listID>/", ReadList.as_view(), name="view_list"),
+    path("<str:listID>/", ReadList.as_view(), name="view_list"),
+    path("<int:listID>/update/", UpdateList.as_view(), name="update_list"),
+    path("<str:listID>/update/", UpdateList.as_view(), name="update_list"),
+    path("<int:listID>/delete/", delete_list, name="delete_list"),
+    path("<str:listID>/delete/", delete_list, name="delete_list"),
     # Task URLs (nested under list)
-    path("<int:ListID>/add/", CreateTask.as_view(), name="add_task"),
-    path("<str:ListID>/add/", CreateTask.as_view(), name="add_task"),
+    path("<int:listID>/add/", CreateTask.as_view(), name="add_task"),
+    path("<str:listID>/add/", CreateTask.as_view(), name="add_task"),
     # Task URLs (by task id or title)
     path("task/<int:taskID>/", ReadTask.as_view(), name="view_task"),
     path("task/<str:taskID>/", ReadTask.as_view(), name="view_task"),

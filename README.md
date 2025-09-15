@@ -43,7 +43,8 @@ The **To-Do List Application** enables users to manage and organize their tasks 
 **To-Do List** is a web based application made predominantly with Django that allows the user to create and keep track of _Tasks_ and complete them with a single click.
 
 ### 🚀 Features
-<!-- 
+
+<!--
 - Dead simple
 - Easily Create, Update
 - Simple UI

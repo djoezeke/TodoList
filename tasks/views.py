@@ -26,36 +26,50 @@ def get_task_by_id_or_title(taskID):
 
 
 # Hompage View
-def home(self, request: HttpRequest, ListID=None):
+def home(request: HttpRequest):
     form = ListForm()
     context = {"form": form}
-    return render(request, "task/home.html", context)
+    return render(request, "tasks/index.html", context)
+
+
+# All List View
+def lists(request: HttpRequest):
+    ls = None
+    context = {"lists": ls}
+    return render(request, "tasks/alllist.html", context)
+
+
+# All Task View
+def tasks(request: HttpRequest):
+    ts = None
+    context = {"tasks": ts}
+    return render(request, "tasks/alltask.html", context)
 
 
 ########################### List Views ###########################
 class CreateList(View):
     """View to create a new List."""
 
-    def get(self, request: HttpRequest, ListID=None):
+    def get(self, request: HttpRequest, listID: str | int = None):
         form = ListForm()
         context = {"form": form}
-        return render(request, "task/addlist.html", context)
+        return render(request, "tasks/addlist.html", context)
 
-    def post(self, request: HttpRequest, ListID=None):
+    def post(self, request: HttpRequest, listID: str | int = None):
         form = ListForm(request.POST)
         if form.is_valid():
             list_obj = form.save()
             messages.success(request, "List created successfully.")
-            return redirect("task:view_list", list_obj.id)
+            return redirect("tasks:view_list", list_obj.id)
         context = {"form": form}
-        return render(request, "task/addlist.html", context)
+        return render(request, "tasks/addlist.html", context)
 
 
 class ReadList(View):
     """View to display a List and its Tasks."""
 
-    def get(self, request: HttpRequest, ListID: str | int):
-        list_obj = get_list_by_id_or_title(ListID)
+    def get(self, request: HttpRequest, listID: str | int):
+        list_obj = get_list_by_id_or_title(listID)
         tasks = list_obj.tasks.all()
         search = request.GET.get("search", "")
         completed = request.GET.get("completed")
@@ -74,39 +88,39 @@ class ReadList(View):
             "search": search,
             "completed": completed,
         }
-        return render(request, "task/viewlist.html", context)
+        return render(request, "tasks/viewlist.html", context)
 
-    def post(self, request: HttpRequest, ListID: str | int):
+    def post(self, request: HttpRequest, listID: str | int):
         # For compatibility, just re-render the list
-        return self.get(request, ListID)
+        return self.get(request, listID)
 
 
 class UpdateList(View):
     """View to update an existing List."""
 
-    def get(self, request: HttpRequest, ListID: str | int):
-        list_obj = get_list_by_id_or_title(ListID)
+    def get(self, request: HttpRequest, listID: str | int):
+        list_obj = get_list_by_id_or_title(listID)
         form = ListForm(instance=list_obj)
         context = {"form": form, "list": list_obj}
-        return render(request, "task/updatelist.html", context)
+        return render(request, "tasks/updatelist.html", context)
 
-    def post(self, request: HttpRequest, ListID: str | int):
-        list_obj = get_list_by_id_or_title(ListID)
+    def post(self, request: HttpRequest, listID: str | int):
+        list_obj = get_list_by_id_or_title(listID)
         form = ListForm(request.POST, instance=list_obj)
         if form.is_valid():
             form.save()
             messages.success(request, "List updated successfully.")
-            return redirect("task:view_list", list_obj.id)
+            return redirect("tasks:view_list", list_obj.id)
         context = {"form": form, "list": list_obj}
-        return render(request, "task/updatelist.html", context)
+        return render(request, "tasks/updatelist.html", context)
 
 
-def delete_list(request: HttpRequest, ListID: str | int):
+def delete_list(request: HttpRequest, listID: str | int):
     """View to delete a List."""
-    list_obj = get_list_by_id_or_title(ListID)
+    list_obj = get_list_by_id_or_title(listID)
     list_obj.delete()
 
-    return redirect("task:home")
+    return redirect("tasks:home")
 
 
 ########################### Task Views ###########################
@@ -115,32 +129,32 @@ def delete_list(request: HttpRequest, ListID: str | int):
 class CreateTask(View):
     """View to create a new Task."""
 
-    def get(self, request: HttpRequest, taskID: str | int):
-        list_obj = get_list_by_id_or_title(taskID)
+    def get(self, request: HttpRequest, listID: str | int):
+        list_obj = get_list_by_id_or_title(listID)
         form = TaskForm()
         context = {"form": form, "list": list_obj}
-        return render(request, "task/addtask.html", context)
+        return render(request, "tasks/addtask.html", context)
 
-    def post(self, request: HttpRequest, taskID: str | int):
-        list_obj = get_list_by_id_or_title(taskID)
+    def post(self, request: HttpRequest, listID: str | int):
+        list_obj = get_list_by_id_or_title(listID)
         form = TaskForm(request.POST)
         if form.is_valid():
-            task = form.save(commit=False)
-            task.list = list_obj
-            task.save()
+            tasks = form.save(commit=False)
+            tasks.list = list_obj
+            tasks.save()
             messages.success(request, "Task created successfully.")
-            return redirect("task:view_task", task.id)
+            return redirect("tasks:view_task", tasks.id)
         context = {"form": form, "list": list_obj}
-        return render(request, "task/addtask.html", context)
+        return render(request, "tasks/addtask.html", context)
 
 
 class ReadTask(View):
     """View to display a Task."""
 
     def get(self, request: HttpRequest, taskID: str | int):
-        task = get_task_by_id_or_title(taskID)
-        context = {"task": task}
-        return render(request, "task/viewtask.html", context)
+        tasks = get_task_by_id_or_title(taskID)
+        context = {"tasks": tasks}
+        return render(request, "tasks/viewtask.html", context)
 
     def post(self, request: HttpRequest, taskID: str | int):
         # Usually, POST is not needed for read-only views, but kept for compatibility
@@ -151,25 +165,25 @@ class UpdateTask(View):
     """View to update an existing Task."""
 
     def get(self, request: HttpRequest, taskID: str | int):
-        task = get_task_by_id_or_title(taskID)
-        form = TaskForm(instance=task)
-        context = {"form": form, "task": task}
-        return render(request, "task/updatetask.html", context)
+        tasks = get_task_by_id_or_title(taskID)
+        form = TaskForm(instance=tasks)
+        context = {"form": form, "tasks": tasks}
+        return render(request, "tasks/updatetask.html", context)
 
     def post(self, request: HttpRequest, taskID: str | int):
-        task = get_task_by_id_or_title(taskID)
-        form = TaskForm(request.POST, instance=task)
+        tasks = get_task_by_id_or_title(taskID)
+        form = TaskForm(request.POST, instance=tasks)
         if form.is_valid():
             form.save()
             messages.success(request, "Task updated successfully.")
-            return redirect("task:view_task", task.id)
-        context = {"form": form, "task": task}
-        return render(request, "task/updatetask.html", context)
+            return redirect("tasks:view_task", tasks.id)
+        context = {"form": form, "tasks": tasks}
+        return render(request, "tasks/updatetask.html", context)
 
 
 def delete_task(request: HttpRequest, taskID: str | int):
     """View to delete a Task."""
-    task = get_task_by_id_or_title(taskID)
-    task.delete()
+    tasks = get_task_by_id_or_title(taskID)
+    tasks.delete()
     messages.success(request, "Task deleted successfully.")
-    return redirect("task:home")
+    return redirect("tasks:home")
