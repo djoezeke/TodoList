@@ -8,12 +8,7 @@ from .models import List, Task
 
 
 class ListForm(forms.ModelForm):
-    """
-    Form for creating and updating a List.
-    Fields:
-        title (str): The name of the list.
-        description (str): Optional description.
-    """
+    """ """
 
     class Meta:
         model = List
@@ -23,12 +18,8 @@ class ListForm(forms.ModelForm):
 class TaskForm(forms.ModelForm):
     """
     Form for creating and updating a Task.
-    Fields:
-        title (str): Task title.
-        description (str): Optional description.
-        completed (bool): Completion status.
     """
 
     class Meta:
         model = Task
-        fields = ["title", "description", "completed"]
+        fields = ["title", "description", "priority", "completed", "due_date"]

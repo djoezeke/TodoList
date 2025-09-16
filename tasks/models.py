@@ -6,10 +6,6 @@ from django.db import models
 class List(models.Model):
     """
     Model representing a list of tasks.
-    Fields:
-        title (str): The name of the list (unique).
-        description (str): Optional description.
-        created (datetime): Timestamp when the list was created.
     """
 
     title = models.CharField(max_length=150, unique=True)
@@ -29,24 +25,23 @@ class List(models.Model):
 class Task(models.Model):
     """
     Model representing a single task.
-    Fields:
-        list (List): ForeignKey to List.
-        title (str): Task title.
-        description (str): Optional description.
-        created (datetime): Timestamp when the task was created.
-        completed (bool): Completion status.
     """
 
     list = models.ForeignKey(List, on_delete=models.CASCADE, related_name="tasks")
-    title = models.CharField(max_length=150)
+    title = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
-    created = models.DateTimeField(auto_now_add=True)
+    due_date = models.DateField(blank=True, null=True)
     completed = models.BooleanField(default=False)
+    priority = models.IntegerField(
+        default=0, choices=[(0, "Low"), (1, "Medium"), (2, "High")]
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = "Task"
         verbose_name_plural = "Tasks"
-        ordering = ["-created"]
+        ordering = ["due_date", "priority"]
 
     def __str__(self):
         """String representation of the Task object."""
