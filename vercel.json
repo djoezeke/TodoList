@@ -1,0 +1,15 @@
+    {
+        "version": 2,
+        "builds": [
+            {
+                "src": "todolist/wsgi.py",
+                "use": "@vercel/python"
+            }
+        ],
+        "routes": [
+            {
+                "src": "/(.*)",
+                "dest": "todolist/wsgi.py"
+            }
+        ]
+    }
