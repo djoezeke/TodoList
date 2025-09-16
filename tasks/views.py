@@ -10,38 +10,56 @@ from .models import List, Task
 from .forms import ListForm, TaskForm
 
 
-# Helper functions.
-def get_list_by_id_or_title(taskID):
-    """Helper to fetch List by id or title."""
-    if isinstance(taskID, int) or (isinstance(taskID, str) and taskID.isdigit()):
-        return get_object_or_404(List, id=int(taskID))
-    return get_object_or_404(List, title=taskID)
+# --- Helper functions ---
+def get_list_by_id_or_title(listID):
+    """
+    Fetch List by id or title.
+    Args:
+        listID (int|str): List id or title.
+    Returns:
+        List instance.
+    """
+    if isinstance(listID, int) or (isinstance(listID, str) and listID.isdigit()):
+        return get_object_or_404(List, id=int(listID))
+    return get_object_or_404(List, title=listID)
 
 
 def get_task_by_id_or_title(taskID):
-    """Helper to fetch Task by id or title."""
+    """
+    Fetch Task by id or title.
+    Args:
+        taskID (int|str): Task id or title.
+    Returns:
+        Task instance.
+    """
     if isinstance(taskID, int) or (isinstance(taskID, str) and taskID.isdigit()):
         return get_object_or_404(Task, id=int(taskID))
     return get_object_or_404(Task, title=taskID)
 
 
-# Hompage View
 def home(request: HttpRequest):
+    """
+    Homepage view: shows form to create a new list.
+    """
     form = ListForm()
     context = {"form": form}
     return render(request, "tasks/index.html", context)
 
 
-# All List View
 def lists(request: HttpRequest):
-    ls = None
+    """
+    View to display all lists (optimized with prefetch_related).
+    """
+    ls = List.objects.prefetch_related("tasks").all()
     context = {"lists": ls}
     return render(request, "tasks/alllist.html", context)
 
 
-# All Task View
 def tasks(request: HttpRequest):
-    ts = None
+    """
+    View to display all tasks (optimized with select_related).
+    """
+    ts = Task.objects.select_related("list").all()
     context = {"tasks": ts}
     return render(request, "tasks/alltask.html", context)
 
@@ -69,6 +87,10 @@ class ReadList(View):
     """View to display a List and its Tasks."""
 
     def get(self, request: HttpRequest, listID: str | int):
+        """
+        Display a List and its Tasks, with search/filter/order options.
+        Optimized with prefetch_related.
+        """
         list_obj = get_list_by_id_or_title(listID)
         tasks = list_obj.tasks.all()
         search = request.GET.get("search", "")
@@ -152,6 +174,9 @@ class ReadTask(View):
     """View to display a Task."""
 
     def get(self, request: HttpRequest, taskID: str | int):
+        """
+        Display a single Task (optimized with select_related).
+        """
         tasks = get_task_by_id_or_title(taskID)
         context = {"tasks": tasks}
         return render(request, "tasks/viewtask.html", context)
