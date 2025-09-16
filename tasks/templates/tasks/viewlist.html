@@ -1,26 +1,26 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block title %}{{ list.title }} List | To-Do List{% endblock %}
+
 {% block content %}
 <div class="container py-5">
     <div class="row mb-4 align-items-center">
-        <div class="col-md-8">
-            <h2 class="fw-bold"><i class="fas fa-list me-2 text-primary"></i>{{ list.title }}</h2>
-            <p class="text-muted mb-0"><i class="far fa-calendar-alt me-1"></i>Created: {{ list.created }}</p>
+        <div class="col-md-12 mb-4">
+            <div class="bg-info text-white d-flex">
+                <h2 class="fw-bold text-center"><i class="text-primary"></i>{{ list.title }}</h2>
+                <!-- <p class="text-muted mb-0"><i class="far fa-calendar-alt me-1"></i>Created: {{ list.created }}</p> -->
+            </div>
         </div>
-        <div class="col-md-4 text-end">
-            <a href="{% url 'tasks:update_list' list.id %}" class="btn btn-outline-primary me-2">
+        <div class="col-md-12 text-end">
+            <a href="{% url 'tasks:add_task' list.id %}" class="btn btn-outline-success">
+                <i class="fas fa-plus-circle"></i> Add Task
+            </a> <a href="{% url 'tasks:update_list' list.id %}" class="btn btn-outline-primary me-2">
                 <i class="fas fa-edit"></i> Edit
             </a>
             <a href="{% url 'tasks:delete_list' list.id %}" class="btn btn-outline-danger"
                 onclick="return confirm('Delete this list?');">
                 <i class="fas fa-trash-alt"></i> Delete
-            </a>
-        </div>
-    </div>
-    <div class="row mb-3">
-        <div class="col-md-12 text-end">
-            <a href="{% url 'tasks:add_task' list.id %}" class="btn btn-success">
-                <i class="fas fa-plus-circle"></i> Add Task
             </a>
         </div>
     </div>

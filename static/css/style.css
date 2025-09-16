@@ -100,6 +100,10 @@ textarea {
   width: 100%;
 }
 
+textarea {
+  height: 50px;
+}
+
 button {
   cursor: pointer;
 }
@@ -227,12 +231,12 @@ body.nav-active {
 }
 
 .btn {
-  color: var(--cinnamon-satin);
   font-size: var(--fs-7);
   font-weight: var(--fw-300);
   max-width: max-content;
-  /* padding: 2px 8px; */
-  border-radius: var(--radius-pill);
+  padding: 2px 8px;
+  border: none;
+  /* border-radius: var(--radius-pill); */
   transition: var(--transition-1);
   will-change: transform;
 }
@@ -292,7 +296,7 @@ body.nav-active {
 }
 
 .container.main {
-  max-width: 700px;
+  max-width: 800px;
   margin: auto;
   background-color: #fff;
   -webkit-box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
@@ -354,7 +358,7 @@ body.nav-active {
   left: 0;
   background-color: var(--white);
   width: 100%;
-  padding-block: 20px;
+  padding-block: 10px;
   box-shadow: var(--shadow-1);
   z-index: 4;
 }
@@ -550,8 +554,8 @@ body.nav-active {
 }
 
 textarea.input-field {
-  min-height: 120px;
-  height: 120px;
+  min-height: 100px;
+  height: 50px;
   max-height: 240px;
   resize: vertical;
 }
