@@ -3,10 +3,25 @@
         "builds": [
             {
                 "src": "todolist/wsgi.py",
-                "use": "@vercel/python"
+                "use": "@vercel/python",
+                "config": {
+                    "maxLambdaSize": "15mb",
+                    "runtime": "python3.13"
+                }
+            },
+            {
+                "src": "build_files.sh",
+                "use": "@vercel/static-builds",
+                "config": {
+                    "disDir": "staticfiles_build"
+                }
             }
         ],
         "routes": [
+            {
+                "src": "/static/(.*)",
+                "dest": "/static/$1"
+            },
             {
                 "src": "/(.*)",
                 "dest": "todolist/wsgi.py"
