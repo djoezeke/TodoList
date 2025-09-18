@@ -20,6 +20,8 @@ class TaskForm(forms.ModelForm):
     Form for creating and updating a Task.
     """
 
+    due_date = forms.DateField(widget=forms.DateInput(attrs={"type": "date"}))
+
     class Meta:
         model = Task
         fields = ["title", "description", "priority", "completed", "due_date"]

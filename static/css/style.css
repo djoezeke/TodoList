@@ -3,6 +3,12 @@
 
 /*==================== VARIABLES CSS ====================*/
 :root {
+  --color1: #3d52a0;
+  --color2: #7091e8;
+  --color3: #8697c4;
+  --color4: #adbbda;
+  --color5: #edeaf5;
+
   /*========== Colors ==========*/
   --white: hsla(0, 0%, 100%, 1);
   --white_a8: hsla(0, 0%, 100%, 0.08);
@@ -243,12 +249,6 @@ body.nav-active {
 
 .btn:is(:hover, :focus-visible) {
   transform: translateY(-4px);
-}
-
-.btn-primary,
-.btn-secondary:is(:hover, :focus-visible) {
-  background-color: var(--cinnamon-satin);
-  color: var(--white);
 }
 
 .section-text {

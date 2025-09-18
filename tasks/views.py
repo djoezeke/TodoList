@@ -41,8 +41,9 @@ def home(request: HttpRequest):
     """
     Homepage view: shows form to create a new list.
     """
+    ls = List.objects.prefetch_related("tasks").all()
     form = ListForm()
-    context = {"form": form}
+    context = {"form": form, "lists": ls}
     return render(request, "tasks/index.html", context)
 
 

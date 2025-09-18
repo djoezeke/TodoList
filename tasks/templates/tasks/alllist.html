@@ -2,37 +2,35 @@
 {% load static %}
 {% block content %}
 <div class="container py-5">
-    <div class="row mb-4 align-items-center">
+    <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="col-md-12 mb-4">
-                <div class="bg-info text-white d-flex">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white d-flex align-items-center">
                     <i class="fas fa-list fa-lg me-2"></i>
                     <h4 class="mb-0">All Lists</h4>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    {% if lists %}
-                    <div class="list-group shadow-sm">
-                        {% for l in lists %}
-                        <li class="list-group-item d-flex justify-content-between align-items-center py-3">
-                            <span><i class="fas fa-list me-2 text-primary"></i>{{ l.title }}</span>
-                            <span>
-                                <a href="{% url 'tasks:view_list' l.id %}" class="btn btn-sm btn-outline-info me-1"
-                                    title="View"><i class="fas fa-eye"></i> View</a>
-                                <a href="{% url 'tasks:update_list' l.id %}" class="btn btn-sm btn-outline-primary me-1"
-                                    title="Edit"><i class="fas fa-edit"></i> Edit</a>
-                                <a href="{% url 'tasks:delete_list' l.id %}" class="btn btn-sm btn-outline-danger"
-                                    title="Delete" onclick="return confirm('Delete this list?');"><i
-                                        class="fas fa-trash-alt"></i> Delete</a>
-                            </span>
-                        </li>
-                        {% endfor %}
-                        </ul>
-                        {% else %}
-                        <div class="text-center text-muted">No lists found.</div>
-                        {% endif %}
-                    </div>
+            <div class="card-body">
+                {% if lists %}
+                <div class="list-group">
+                    {% for l in lists %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                        <span><i class="fas fa-list me-2 text-primary"></i>{{ l.title }}</span>
+                        <span>
+                            <a href="{% url 'tasks:view_list' l.id %}" class="btn btn-sm btn-outline-info me-1"
+                                title="View"><i class="fas fa-eye"></i> View</a>
+                            <a href="{% url 'tasks:update_list' l.id %}" class="btn btn-sm btn-outline-primary me-1"
+                                title="Edit"><i class="fas fa-edit"></i> Edit</a>
+                            <a href="{% url 'tasks:delete_list' l.id %}" class="btn btn-sm btn-outline-danger"
+                                title="Delete" onclick="return confirm('Delete this list?');"><i
+                                    class="fas fa-trash-alt"></i> Delete</a>
+                        </span>
+                    </li>
+                    {% endfor %}
+                    </ul>
+                    {% else %}
+                    <div class="text-center text-muted">No lists found.</div>
+                    {% endif %}
                 </div>
             </div>
         </div>
