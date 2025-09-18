@@ -20,7 +20,22 @@ class TaskForm(forms.ModelForm):
     Form for creating and updating a Task.
     """
 
-    due_date = forms.DateField(widget=forms.DateInput(attrs={"type": "date"}))
+    completed = forms.BooleanField(
+        widget=forms.CheckboxInput(
+            attrs={
+                "class": "form-check-input",
+                "type": "checkbox",
+            }
+        ),
+        required=False,
+        initial=False,
+    )
+    due_date = forms.DateField(
+        widget=forms.DateInput(
+            attrs={"type": "date"},
+        ),
+        required=False,
+    )
 
     class Meta:
         model = Task

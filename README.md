@@ -51,11 +51,17 @@ The **To-Do List Application** enables users to manage and organize their tasks 
 
 2. Find a free webhosting and domain online and publish your web application
 
-### Group Members
+### 👥 Team Members
 
 - Hagan Eshun Ebenezer **01243192B**
 - Sackey Ezekiel Etrue **01243101B**
 - Nathaniel Okyere **01241217B**
+
+#### 🚀 Live Demo
+
+🌐 [To-Do List](https://todolist-python.vercel.app)
+
+---
 
 <!-- #### Example Screenshots
 
@@ -75,15 +81,11 @@ The **To-Do List Application** enables users to manage and organize their tasks 
 - ⚡ **Fast and intuitive** user experience
 - 🛡️ **Secure** with CSRF protection and Django best practices
 
-<!--
-✔️ Complete Tasks
-🌠 Move Task
-❌ Delete Task
-🌟 Select Tasks
-💼 Create Folders
-📁 Open Folder
-❌ Delete Folder
--->
+- 🌟 Later/Bonus Features to Add
+  - ✅ Task status (To-do, In Progress, Done)
+  - 📅 Due dates with calendar picker
+  - 🔔 Notifications via Supabase real-time
+  - 👥 User authentication with Django or Supabase Auth
 
 ## 📁 Project Structure
 

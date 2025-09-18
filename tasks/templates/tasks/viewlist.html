@@ -41,8 +41,9 @@
                                     {{ task.title }}
                                     {% endif %}
                                 </span>
-                                <span class="badge bg-secondary"><i class="far fa-calendar-alt me-1"></i>{{
-                                    task.created|date:'Y-m-d' }}</span>
+                                <span class="badge bg-secondary">
+                                    <i class="far fa-calendar-alt me-1"></i>
+                                    {{ task.created|date:'Y-m-d' }}</span>
                             </a>
                             {% empty %}
                             <div class="list-group-item text-center text-muted">No tasks found.</div>

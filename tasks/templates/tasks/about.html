@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About | To-Do List{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center mb-4">
+        <div class="col-lg-10">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white d-flex align-items-center">
+                    <i class="fa-solid fa-circle-info fa-lg me-2"></i>
+                    <h3 class="mb-0">About This Project</h3>
+                </div>
+                <div class="card-body">
+                    <h3 class="mb-3">To-Do List App</h3>
+                    <p class="lead">A modern, responsive web application for organizing and managing tasks, built with
+                        Django, Supabase, and Bootstrap. Developed as a group project for a college web development
+                        course.</p>
+                    <hr>
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h5>Assignment Details</h5>
+                            <ul class="list-unstyled mb-2">
+                                <li><strong>Course:</strong> Web Application Development</li>
+                                <li><strong>Instructor:</strong> Python Lecturer</li>
+                                <li><strong>Submission Date:</strong> September 18, 2025</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Links</h5>
+                            <a href="https://github.com/djoezeke/TodoList" class="btn btn-outline-dark me-2 mb-2"
+                                target="_blank"><i class="fab fa-github me-1"></i> GitHub Repo</a>
+                            <a href="https://todolist-python.vercel.app" class="btn btn-outline-success mb-2"
+                                target="_blank"><i class="fa fa-globe me-1"></i> Live Demo</a>
+                        </div>
+                    </div>
+                    <h5 class="mb-3">Team Members</h5>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-4">
+                            <div class="card h-100 text-center bg-light border-0 shadow-sm">
+                                <img src="https://ui-avatars.com/api/?name=Hagan+Eshun+Ebenezer&background=0D8ABC&color=fff"
+                                    class="card-img-top mx-auto mt-3 rounded-circle"
+                                    style="width:90px; height:90px; object-fit:cover;" alt="Hagan Eshun Ebenezer">
+                                <div class="card-body">
+                                    <h6 class="card-title mb-1">Hagan Eshun Ebenezer</h6>
+                                    <p class="card-text small mb-0">Backend Developer</p>
+                                    <span class="badge bg-secondary">01243192B</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100 text-center bg-light border-0 shadow-sm">
+                                <img src="https://ui-avatars.com/api/?name=Sackey+Ezekiel+Etrue&background=0D8ABC&color=fff"
+                                    class="card-img-top mx-auto mt-3 rounded-circle"
+                                    style="width:90px; height:90px; object-fit:cover;" alt="Sackey Ezekiel Etrue">
+                                <div class="card-body">
+                                    <h6 class="card-title mb-1">Sackey Ezekiel Etrue</h6>
+                                    <p class="card-text small mb-0">Fullstack Developer</p>
+                                    <span class="badge bg-secondary">01243101B</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100 text-center bg-light border-0 shadow-sm">
+                                <img src="https://ui-avatars.com/api/?name=Nathaniel+Okyere&background=0D8ABC&color=fff"
+                                    class="card-img-top mx-auto mt-3 rounded-circle"
+                                    style="width:90px; height:90px; object-fit:cover;" alt="Nathaniel Okyere">
+                                <div class="card-body">
+                                    <h6 class="card-title mb-1">Nathaniel Okyere</h6>
+                                    <p class="card-text small mb-0">Frontend Developer</p>
+                                    <span class="badge bg-secondary">01241217B</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h5 class="mb-3">Acknowledgments</h5>
+                    <ul class="list-inline mb-4">
+                        <li class="list-inline-item"><a href="https://www.djangoproject.com/" target="_blank">Django</a>
+                        </li>
+                        <li class="list-inline-item"><a href="https://supabase.com/" target="_blank">Supabase</a></li>
+                        <li class="list-inline-item"><a href="https://vercel.com/" target="_blank">Vercel</a></li>
+                        <li class="list-inline-item"><a href="https://getbootstrap.com/" target="_blank">Bootstrap</a>
+                        </li>
+                        <li class="list-inline-item"><a href="https://fontawesome.com/" target="_blank">Font Awesome</a>
+                        </li>
+                        <li class="list-inline-item"><a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

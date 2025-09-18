@@ -1,7 +1,6 @@
 <!doctype html>
 {% load static %}
-<html lang="en">
-
+<html lang="en" id="html" data-bs-theme="auto">
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -51,7 +50,7 @@
                         <a class="navbar-link" href="{% url 'tasks:all_task' %}">Tasks</a>
                     </li>
                     <li class="navbar-item">
-                        <a class="navbar-link" href="{% url 'tasks:home' %}">About</a>
+                        <a class="navbar-link" href="{% url 'tasks:about' %}">About</a>
                     </li>
                 </ul>
 
@@ -110,6 +109,13 @@
             {% block content %}
 
             {% endblock %}
+        </div>
+        <div class="row justify-content-center mb-4 mx-4">
+            <button id="theme-toggle" class="btn btn-outline-secondary d-flex align-items-center px-3 py-2"
+                aria-label="Toggle dark mode" style="gap: 0.5rem;">
+                <span id="theme-toggle-text" class="d-none d-md-inline">Dark Mode</span>
+                <i id="theme-icon" class="fa-solid fa-moon"></i>
+            </button>
         </div>
     </main>
     <!-- main ends -->

@@ -31,7 +31,7 @@ from .views import (
     delete_task,
 )
 
-from .views import home, tasks, lists
+from .views import home, tasks, lists, about
 
 app_name: str = "tasks"
 
@@ -41,6 +41,7 @@ urlpatterns = [
     path("add/", CreateList.as_view(), name="add_list"),
     path("tasks/", tasks, name="all_task"),
     path("lists/", lists, name="all_list"),
+    path("about/", about, name="about"),
     # List URLs
     path("<int:listID>/", ReadList.as_view(), name="view_list"),
     path("<str:listID>/", ReadList.as_view(), name="view_list"),

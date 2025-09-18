@@ -65,6 +65,14 @@ def tasks(request: HttpRequest):
     return render(request, "tasks/alltask.html", context)
 
 
+def about(request: HttpRequest):
+    """
+    View to display about
+    """
+    context = {}
+    return render(request, "tasks/about.html", context)
+
+
 ########################### List Views ###########################
 class CreateList(View):
     """View to create a new List."""
