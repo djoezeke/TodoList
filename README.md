@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <img src="shot.png" alt="To-Do List"/>
+  <img src="images/shot.png" alt="To-Do List"/>
 </p>
 
 <details>
@@ -67,6 +67,15 @@ The **To-Do List Application** enables users to manage and organize their tasks 
 
 <p align="center">
    <img src="images/to-do-list.jpg" alt="To-Do List UI" width="600"/>
+</p>
+<p align="center">
+  <img src="images/list.jpg" alt="To-Do List"/>
+</p>
+<p align="center">
+  <img src="images/list2.jpg" alt="To-Do List"/>
+</p>
+<p align="center">
+  <img src="images/schedules.jpg" alt="To-Do List"/>
 </p>
 
 ## 🚀 Features
